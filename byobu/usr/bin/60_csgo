@@ -1,0 +1,8 @@
+#!/bin/sh -e
+
+if test -n "$(pgrep srcds)"
+then
+	color d G; printf "csgo"; color --
+else
+	color d R; printf "csgo"; color --
+fi

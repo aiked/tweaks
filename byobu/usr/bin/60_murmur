@@ -1,0 +1,8 @@
+#!/bin/sh -e
+
+if test -n "$(pgrep murmur)"
+then
+	color d G; printf "murmur"; color --
+else
+	color d R; printf "murmur"; color --
+fi

@@ -1,0 +1,8 @@
+#!/bin/sh -e
+
+if P=$(pgrep vsftpd)
+then
+	color d G; printf "ftp"; color --
+else
+	color d R; printf "ftp"; color --
+fi
