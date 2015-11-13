@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/aike/Documents'
+let g:netrw_dirhist_2='/Users/aike/Documents/libs'
+let g:netrw_dirhist_3='/Users/aike/Documents/libs/cpp_allocators'
+let g:netrw_dirhist_4='/Users/aike/Documents/libs/cpp_allocators/TestAllocators'
+let g:netrw_dirhist_5='/Users/aike/Documents/csd/cs345/assign2'
+let g:netrw_dirhist_6='/Users/aike/Documents/csd/cs345/assign2/edition2'
+let g:netrw_dirhist_7='/Users/aike/Documents/libs'
+let g:netrw_dirhist_8='/Users/aike/Documents/libs/cpp_allocators'
+let g:netrw_dirhist_9='/Users/aike/Documents/libs/cpp_allocators/TestAllocators'
