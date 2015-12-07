@@ -1,10 +1,10 @@
+" aike vim config file
+
 set shiftwidth=2    " two spaces per indent
 set tabstop=2       " number of spaces per tab in display
 set softtabstop=2   " number of spaces per tab when inserting
 set expandtab       " substitute spaces for tab
 
-filetype plugin indent on
-syntax on
 
 " Display.
 set ruler           " show cursor position
@@ -20,14 +20,14 @@ set cursorline
 set scrolljump=1    " scroll five lines at a time vertically
 set sidescroll=10   " minumum columns to scroll horizontally
 
-" CMD
+" Status bar
 set cmdheight=1
-set laststatus=2
+set noshowmode
 
 " Search.
-set nohlsearch      " don't persist search highlighting
+set nohlsearch!      " don't persist search highlighting
 set incsearch       " search with typeahead
-nnoremap <C-h> :set hlsearch!<CR>
+nmap <C-F> :set hlsearch!<CR>
 
 " Indent.
 set autoindent      " carry indent over to new lines
@@ -50,7 +50,8 @@ nmap ,e :e $HOME/.config/nvim/init.vim
 nmap ,r :source $HOME/.config/nvim/init.vim
 
 " Color theme
-colorscheme dracula
+set background=dark
+colorscheme aike
 
 " Bindings for managing tabs
 nnoremap <C-p>  :tabprevious<CR>
@@ -71,27 +72,57 @@ vmap #' c''<left><c-r>"<esc>
 vmap #" c""<left><c-r>"<esc>
 
 set colorcolumn=81
-hi ColorColumn ctermbg=Darkgray
 
 " CTAGS
 set tags=tags;/
-
-"""""""""""""""""""""""""""""""""""""""""""""
-"                 Pathogen
-"""""""""""""""""""""""""""""""""""""""""""""
-" execute pathogen#infect()
+set tags+=./.tags
 
 """""""""""""""""""""""""""""""""""""""""""""
 "                 Plug
 """""""""""""""""""""""""""""""""""""""""""""
+filetype off
 call plug#begin('~/.vim/plugged')
 
-Plug 'YouCompleteMe', {'pinned': 1}
-Plug 'jiangmiao/auto-pairs', {'name':'Auto-pairs'}
+Plug 'Valloric/YouCompleteMe', {'name': 'YouCompleteMe'}
+Plug 'jiangmiao/auto-pairs', {'name': 'Auto-pairs'}
+Plug 'octol/vim-cpp-enhanced-highlight', {'name': 'Vim-Cpp-Highlight'}
+Plug 'scrooloose/syntastic', {'name': 'Syntastic'}
+Plug 'bling/vim-airline', {'name': 'Vim-airline'}
 
 call plug#end()
+filetype plugin indent on
+syntax on
 
-set tags+=./.tags
+" Airline
+set laststatus=2
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='aike'
+
+
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+
+" C++ highs
+let g:cpp_class_scope_highlight = 1
+
+let g:ycm_auto_trigger = 1
+let g:ycm_global_ycm_extra_conf = "~/.vim/ycm-osx.py"
+let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_autoclose_preview_window_after_insertion=1
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+
+let g:AutoPairsMapCR = 0
 
 " ASCII tables - you may need them some day!
 " ===================================================================
