@@ -8,7 +8,7 @@ set expandtab       " substitute spaces for tab
 
 " Display.
 set ruler           " show cursor position
-set number          " hide line numbers
+set nonumber          " hide line numbers
 set nolist          " hide tabs and EOL chars
 set showcmd         " show normal mode commands as they are entered
 set showmode        " show editing mode in status (-- INSERT --)
@@ -23,6 +23,10 @@ set sidescroll=10   " minumum columns to scroll horizontally
 " Status bar
 set cmdheight=1
 set noshowmode
+
+" Error column symbols
+let g:EclimQuickfixSignText = ">"
+let g:EclimLoclistSignText = "*"
 
 " Search.
 set nohlsearch!      " don't persist search highlighting
@@ -97,20 +101,15 @@ syntax on
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#whitespace#enabled = 1
 let g:airline_theme='aike'
 
-
-
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
+let g:syntastic_stl_format = ''
 
 " C++ highs
 let g:cpp_class_scope_highlight = 1

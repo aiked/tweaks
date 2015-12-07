@@ -87,8 +87,8 @@
   hi Search           guifg=#000000 guibg=#b8ea00 gui=bold
   hi IncSearch        guifg=#f8cf00 guibg=#000000
 
-  hi Error            guifg=#e5a5a5 guibg=#602020 gui=bold,underline
-  hi ErrorMsg         guifg=#f5c5c5 guibg=#901010 gui=bold
+  hi Error            guifg=#ffb86c guibg=#282a36 gui=bold
+  hi ErrorMsg         guifg=#ffb86c guibg=#282a36 gui=bold
   hi WarningMsg       guifg=#edc830 guibg=NONE    gui=none
   hi WildMenu         guifg=#000000 guibg=#A6DB29 gui=none
   hi Question         guifg=#000000 guibg=#A6DB29 gui=none
@@ -110,7 +110,7 @@
   hi PmenuSbar                      guibg=#a0a0a0
   hi PmenuThumb                     guibg=#555555
 
-  hi SignColumn       guifg=#A6E22E guibg=#303032
+  hi SignColumn       guifg=#ffb86c guibg=#282a36
   hi FoldColumn       guifg=#b0b8c0 guibg=#373d43 gui=bold
   hi Folded 	        guifg=#727780 guibg=#373d43 gui=none
 
