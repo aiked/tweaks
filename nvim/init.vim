@@ -5,7 +5,6 @@ set tabstop=2       " number of spaces per tab in display
 set softtabstop=2   " number of spaces per tab when inserting
 set expandtab       " substitute spaces for tab
 
-
 " Display.
 set ruler           " show cursor position
 set nonumber          " hide line numbers
@@ -49,6 +48,8 @@ set viminfo='50,"50   " '=marks for x files, "=registers for x files
 
 set modelines=0       " modelines are bad for your health
 
+set colorcolumn=81
+
 " make it easy to edit/reload .vimrc
 nmap ,e :e $HOME/.config/nvim/init.vim
 nmap ,r :source $HOME/.config/nvim/init.vim
@@ -67,6 +68,17 @@ nmap <S-Tab> <<
 " " for insert mode
 imap <S-Tab> <Esc><<i
 
+" Terminal
+:tnoremap <Esc> <C-\><C-n>
+:tnoremap <A-h> <C-\><C-n><C-w>h
+:tnoremap <A-j> <C-\><C-n><C-w>j
+:tnoremap <A-k> <C-\><C-n><C-w>k
+:tnoremap <A-l> <C-\><C-n><C-w>l
+:nnoremap <A-h> <C-w>h
+:nnoremap <A-j> <C-w>j
+:nnoremap <A-k> <C-w>k
+:nnoremap <A-l> <C-w>l
+
 " add stars/brackets/inverted commas around selected text
 vmap #* c**<left><c-r>"<esc>
 vmap #( c()<left><c-r>"<esc>
@@ -75,11 +87,12 @@ vmap #[ c[]<left><c-r>"<esc>
 vmap #' c''<left><c-r>"<esc>
 vmap #" c""<left><c-r>"<esc>
 
-set colorcolumn=81
-
-" CTAGS
+" ctags
 set tags=tags;/
 set tags+=./.tags
+
+" Language
+set spell
 
 """""""""""""""""""""""""""""""""""""""""""""
 "                 Plug
@@ -102,7 +115,7 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#whitespace#enabled = 0
 let g:airline_theme='aike'
 
 let g:syntastic_always_populate_loc_list = 1
