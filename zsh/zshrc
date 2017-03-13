@@ -1,0 +1,79 @@
+# aike 
+
+# terminal
+export TERM="xterm-256color"
+PROMPT="%F{blue}%c%F{green}|%f"
+
+# base16-shell (https://github.com/chriskempson/base16-shell)
+BASE16_SHELL=$HOME/dev/git/base16-shell/
+[ -n "$PS1"  ] && [ -s $BASE16_SHELL/profile_helper.sh  ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
+# tmux
+alias tmuxa="tmux attach -t mikath"
+alias tmuxn="tmux new -s mikath"
+
+# editor
+alias vim='mvim -v' 
+export EDITOR='mvim -v'
+
+# Common alias
+alias ls='ls -GF'
+alias la='ls -a'
+alias ll="ls -FGlAhp"
+alias disks="df -H"
+alias cp="cp -v"
+alias mv="mv -v"
+alias rmf="rm -rf"
+alias mkdir="mkdir -pv"
+alias disks="df -ha"
+alias network="sudo iptraf"
+alias ..="cd .."
+alias untar="tar -xzvf"
+alias c="clear"
+
+# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+bindkey '^R' history-incremental-search-backward
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
+
+bindkey "^N" forward-word
+bindkey "^P" backward-word
+
+autoload -Uz compinit
+compinit
+
+platform=`uname`
+# osx specific stuff
+if [[ "$platform" == "Darwin" ]]; then
+  # file descriptors 
+  ulimit -n 5120
+fi 
+
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete _correct _approximate
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' menu select=2
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
+zstyle ':completion:*' menu select=long
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' use-compctl false
+zstyle ':completion:*' verbose true
+
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+# function run
+run() {
+    number=$1
+    shift
+    for i in `seq $number`; do
+      $@
+    done
+}

@@ -1,0 +1,8 @@
+[ui]
+  username =
+
+[alias]
+  cdiff = !hg diff -c $(hg id -i)
+  stats = status --change tip
+  master = up remote/master
+  remaster = rebase -d remote/master

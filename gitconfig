@@ -1,0 +1,23 @@
+[user]
+  name =
+  email =
+
+[alias]
+  alias = config --get-regexp ^alias\\.
+  ahead = log origin/master..HEAD --oneline
+  stats = log origin/master..HEAD --stat
+  amend = commit --amend --no-edit
+  pr = pull --rebase
+  br = branch
+  ck = checkout
+  del = branch -D
+  st = status
+  ls = branch -vv
+  new = "!sh -c \"git checkout -b $1; git branch -u origin/master; git pull --rebase\" -"
+
+[merge]
+  conflictstyle = diff3
+[branch]
+  autosetuprebase = always
+[core]
+	excludesfile =
