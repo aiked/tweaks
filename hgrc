@@ -3,6 +3,8 @@
 
 [alias]
   cdiff = !hg diff -c $(hg id -i)
-  stats = status --change tip
+  stats = log -l 1 --stat
   master = up remote/master
   remaster = rebase -d remote/master
+  bk = bookmark
+  del = !hg strip $1; hg bookmark -d $1
